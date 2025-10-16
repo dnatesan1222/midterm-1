@@ -172,8 +172,33 @@ class DoublyLinkedList {
 			}
 			cout << endl;
 		}
+		void every_other_element(){
+			Node* current = head;
+			if (!current) {
+                                cout << "List is empty." << endl;
+                                return;
+                        }
+			cout << current->data << " ";
+			while (current && current->next) {
+                                current = current->next;
+				current = current->next;
+				cout << current->data << " ";
+                        }
+			cout << endl;
+		}
 };
 int main() {
+	DoublyLinkedList list;
+	list.every_other_element();
+	list.push_back(1);
+	list.push_back(2);
+	list.push_back(3);
+        list.push_back(4);
+	list.push_back(5);
+        list.push_back(6);
+	list.print();
+	list.every_other_element();
+
 	cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
 	return 0;
 }
