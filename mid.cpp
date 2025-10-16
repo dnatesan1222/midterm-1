@@ -7,19 +7,19 @@ const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;	//constant values a
 class DoublyLinkedList {	//header for a class which is an object
 	private:	//private access for the struct, head, and tail so they can only be accessed within the object or through methods in the public access. promotes security in each DLL that is created
 		struct Node {	//struct header
-			int data;	//instance variable - the data that is stored in a node
+			int data;	//instance variable fir the struct - the data that is stored in a node
 			Node* prev;	//pointer to the previous node of the list (stores the address so that node can be accessed)
 			Node* next;	//pointer to the next node in the list (stores the address, not an instance variable)
 			Node(int val, Node* p = nullptr, Node* n = nullptr) {	//struct constructor? initializes the members of the struct (data, prev, and next)
-				data = val;
-				prev = p;
-				next = n;
-			}
-		};
-		Node* head;
-		Node* tail;
-	public:
-		DoublyLinkedList() { head = nullptr; tail = nullptr; }
+				data = val;	//sets data to store the inputted value
+				prev = p;	//initializes to nullptr
+				next = n;	//initializes to nullptr
+			}	//end of struct function
+		};	//end of struct
+		Node* head;	//instance variable for DLL object, each DLL has a head node
+		Node* tail;	//instance variable for DLL object, each DLL has a tail node
+	public:		//public access for these methods so the DLL can be manipulated in main()/driver. promotes security of the DLL's head and tail
+		DoublyLinkedList() { head = nullptr; tail = nullptr; }	//default constructor initializes head + tail and sets them to nullptr
 		void insert_after(int value, int position) {
 			if (position < 0) {
 				cout << "Position must be >= 0." << endl;
