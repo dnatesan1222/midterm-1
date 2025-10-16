@@ -1,16 +1,16 @@
 // COMSC-210 | Midterm #1 | Diksha Tara Natesan
 // IDE used: Vim/Terminal
 
-#include <iostream>	//imports a package that allows
-using namespace std;	//allows usage of cout/endl for output and other features if necessary
+#include <iostream>	//imports cpp standard library that allows cout to be used
+using namespace std;	//allows usage of cout/endl for output and other features if necessary without needing to do std:: before each individual usage
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;	//constant values are set so they can be referenced later formin/max values/sizes
 class DoublyLinkedList {	//header for a class which is an object
-	private:	//private access for the struct, head, and tail so they can only be accessed within the object or through methods in the public access. promoted security in each DLL that is created
-		struct Node {
-			int data;
-			Node* prev;
-			Node* next;
-			Node(int val, Node* p = nullptr, Node* n = nullptr) {
+	private:	//private access for the struct, head, and tail so they can only be accessed within the object or through methods in the public access. promotes security in each DLL that is created
+		struct Node {	//struct header
+			int data;	//instance variable - the data that is stored in a node
+			Node* prev;	//pointer to the previous node of the list (stores the address so that node can be accessed)
+			Node* next;	//pointer to the next node in the list (stores the address, not an instance variable)
+			Node(int val, Node* p = nullptr, Node* n = nullptr) {	//struct constructor? initializes the members of the struct (data, prev, and next)
 				data = val;
 				prev = p;
 				next = n;
