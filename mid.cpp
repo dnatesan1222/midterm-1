@@ -25,18 +25,18 @@ class DoublyLinkedList {	//header for a class which is an object
 				cout << "Position must be >= 0." << endl;	//gives the user an error message if not
 				return;		//stops the rest of the method from running because the method should not work for negative values
 			}	//end of if block
-			Node* newNode = new Node(value);	//creates a new node with the argument value's value stored in data
+			Node* newNode = new Node(value);	//creates a new node with the argument value's value stored in data and newNode stires the address at which the node is located
 			if (!head) {	//checks if the list is empty
-				head = tail = newNode;	//if so, the new node is the only node in the list so the head and tail both point to its address
+				head = tail = newNode;	//if so, the address stored in newNode pointer becomes the same address stored in the head/tail pointers because this is the only node in the list so the head and tail both point to one node address
 				return;		//stops the rest of the method from running because the node was added and the position isn't something that needed to be accounted for because the list was originally empty
-			}
-			Node* temp = head;
-			for (int i = 0; i < position && temp; ++i)
-				temp = temp->next;
-			if (!temp) {
-				cout << "Position exceeds list size. Node not inserted.\n";
-				delete newNode;
-				return;
+			}	//end of if block
+			Node* temp = head;	//creates a temporary pointer to store the location at which the head node is at
+			for (int i = 0; i < position && temp; ++i)	//for loop finds the node at the position from the argument and ensures temp stays within the list's bounds
+				temp = temp->next;	//sets pointer to the next pointer until correct pos is found
+			if (!temp) {	//check if the pos was out of bounds
+				cout << "Position exceeds list size. Node not inserted.\n";	//error message
+				delete newNode;		//delete the stored pointer to free up space
+				return;		//ends the method once it is discovered that the pos is invalid
 			}
 			newNode->next = temp->next;
 			newNode->prev = temp;
