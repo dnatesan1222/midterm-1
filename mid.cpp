@@ -178,11 +178,12 @@ class DoublyLinkedList {
                                 cout << "List is empty." << endl;
                                 return;
                         }
-			cout << current->data << " ";
-			while (current && current->next) {
-                                current = current->next;
+			int even = 0;
+			while (current) {
+                                if (even%2 == 0)
+                                        cout << current->data << " ";
 				current = current->next;
-				cout << current->data << " ";
+				even += 1;
                         }
 			cout << endl;
 		}
@@ -196,6 +197,7 @@ int main() {
         list.push_back(4);
 	list.push_back(5);
         list.push_back(6);
+	list.push_back(7);
 	list.print();
 	list.every_other_element();
 
