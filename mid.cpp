@@ -38,17 +38,17 @@ class DoublyLinkedList {	//header for a class which is an object
 				delete newNode;		//delete the stored pointer to free up space
 				return;		//ends the method once it is discovered that the pos is invalid
 			}
-			newNode->next = temp->next;
-			newNode->prev = temp;
-			if (temp->next)
+			newNode->next = temp->next;	//set the new node's next pointer to the next pointer of the temp node
+			newNode->prev = temp;		//set the new node's prev pointer to the pointer of the temp node so the new node is wedged between those two nodes
+			if (temp->next)	//check if the node after the inserted node exists so its prev pointer can be edited to point to this newly created node
 				temp->next->prev = newNode;
-			else
+			else	//if the next node in the list doesn't exist, update the tail pointer because the newly added node is the new tail of the DLL
 				tail = newNode;
-			temp->next = newNode;
+			temp->next = newNode;	//make sure the node that originally existed in the list points to the new node as the next node as well
 		}
 		void delete_val(int value) {
-			if (!head) return;
-			Node* temp = head;
+			if (!head) return;	//checks if list is empty
+			Node* temp = head;	
 			while (temp && temp->data != value)
 				temp = temp->next;
 			if (!temp) return;
